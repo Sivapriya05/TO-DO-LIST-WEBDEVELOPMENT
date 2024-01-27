@@ -1,0 +1,79 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff6c;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+#task-container {
+    margin-bottom: 20px;
+}
+
+#task-input {
+    padding: 8px;
+    margin-right: 8px;
+}
+
+#add-task-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #eee;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+script.js:
+javascript
+Copy code
+function addTask() {
+    var taskInput = document.getElementById('task-input');
+    var taskList = document.getElementById('task-list');
+
+    if (taskInput.value.trim() !== '') {
+        var li = document.createElement('li');
+        li.innerHTML = taskInput.value + '<button class="delete-btn" onclick="deleteTask(this)">Delete</button>';
+        taskList.appendChild(li);
+        taskInput.value = '';
+    }
+}
+
+function deleteTask(button) {
+    var taskList = document.getElementById('task-list');
+    var li = button.parentNode;
+    taskList.removeChild(li);
+}
